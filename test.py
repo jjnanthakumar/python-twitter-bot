@@ -48,21 +48,43 @@ def store_last_seen(FILE_NAME, last_seen_id):
     file_write.close()
     return
 
+# Retweet people who mention twittername
+def diceguys_mentions():
+    # Returns the 20 most recent mentions, including retweets.
+    tweets = api.mentions_timeline(read_last_seen(FILE_NAME), tweet_mode='extended')
+    # for loop to like and retweet any
+    # tweets containing @somediceguys
+    for tweet in reversed(tweets):
+        if twittername in tweet.full_text.lower():
+            print("New twitter interaction")
+            tweet.retweet()
+            api.create_favorite(tweet.id)
+
 # For loop to search and like hashtag list
 def search_and_like():
     for tweet in hashtaglist:
         api.create_favorite(tweet.id)
         print( tweet + " found, adding to favorites")
 
+# Search for hashtag variables, like, and retweet
 def searchbot_ht1():
     for tweet in hashtag1tweets:
         try:
+            tweet.retweet()
             api.create_favorite(tweet.id)
-            print( hashtag1 + " found, adding to favorites")
+            print( hashtag1 + " found, liked and retweeted")
         except tweepy.TweepError as e:
             print(e.reason)
             time.sleep(3)
 
+# For loop to search and like hashtag list
+def search_and_like():
+    for tweet in hashtaglist:
+        api.create_favorite(tweet.id)
+        print( tweet + " found, adding to favorites")
+
+
+search_and_like
 searchbot_ht1
 
 #while True:
