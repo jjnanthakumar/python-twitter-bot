@@ -1,10 +1,12 @@
 Python bots with self explanatory names
 
 # Important Variables
-Secret variables can be set in the variables.sh script
+Secret variables can be set in the .env file
 The script sets the consumer key, private key, and other
 twitter Oauth variables as global variables in the environment.
 These must be placed to connect to twitter account and run the scripts.  
+
+# NOTE: .env file has secrets that should not be saved in git 
 
 # python-twitter-bot
 Python Twitter Bot to like, follow, and retweet user intearctions

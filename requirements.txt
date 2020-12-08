@@ -1,1 +1,2 @@
 tweepy>=3.9.0
+python-decouple>=3.3
