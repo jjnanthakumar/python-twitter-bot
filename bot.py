@@ -1,7 +1,3 @@
-# Twitter bot to read, reply, and retweet
-# from interaction
-# tutorial link https://www.youtube.com/watch?v=ewq-91-e2fw&list=WL&index=2&t=112s
-# stopped at 13:40
 import tweepy
 import time
 
@@ -131,8 +127,7 @@ def search_and_like():
         api.create_favorite(tweet.id)
         print( tweet + " found, adding to favorites")
 
-while True:
-    diceguys_mentions
-    search_and_like
-    direct_message
-    #reply()
+diceguys_mentions
+search_and_like
+direct_message
+#reply()

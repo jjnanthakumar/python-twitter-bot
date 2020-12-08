@@ -1,8 +1,3 @@
-# Twitter bot to retweet, follow, and DM people who interact with
-# specific user
-# from interaction
-# tutorial link https://www.youtube.com/watch?v=ewq-91-e2fw&list=WL&index=2&t=112s
-# stopped at 13:40
 import tweepy
 import time
 
