@@ -1,5 +1,6 @@
 import tweepy
 import time
+import os
 
 # Assign twitter Oauth variables
 consumer_key = 'consumer-key'
@@ -41,12 +42,4 @@ def reply():
             #api.update_status("@" + tweet.user.screen_name + " Thank you!", tweet.id)
             store_last_seen(FILE_NAME, tweet.id)
 
-
-    #reply()
-    #time.sleep(7)
-
-# Send a thank you DM for new followers
-
-# search for #ActualPlay and #dndpodcast tweets
-
-# retweet any mention of @somediceguys
+reply

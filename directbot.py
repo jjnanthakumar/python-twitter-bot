@@ -1,5 +1,6 @@
 import tweepy
 import time
+import os
 
 # Assign twitter Oauth variables
 consumer_key = 'consumer-key'
@@ -10,7 +11,7 @@ url = 'https://linktr.ee/somediceguys'
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(key, secret)
 api = tweepy.API(auth)
-twittername ='@somediceguys' 
+twittername ='@somediceguys'
 
 
 # name for file saving tweet records

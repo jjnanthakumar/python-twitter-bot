@@ -1,5 +1,6 @@
 import tweepy
 import time
+import os
 
 # Assign twitter Oauth variables
 consumer_key = 'consumer-key'

@@ -1,7 +1,19 @@
 import tweepy
 import time
+import os
 
 # Assign twitter Oauth variables
+# Set environment variables
+os.environ['BOT_CON_KEY'] = 'username'
+os.environ['BOT_CON_SECRET'] = 'secret'
+os.environ['BOT_CON_PRIVATE'] = 'username'
+os.environ['BOT_CON_SECRET'] = 'secret'
+os.environ['BOT_SHARE_URL'] = 'username'
+os.environ['BOT_TW_AUTH'] = 'secret'
+os.environ['BOT_ACCESS_TOKEN'] = 'username'
+os.environ['BOT_API'] = 'secret'
+os.environ['BOT_TWITTERNNAME'] = 'secret'
+
 consumer_key = 'consumer-key'
 consumer_secret = 'consumer-secret'
 key = 'privateKey'
