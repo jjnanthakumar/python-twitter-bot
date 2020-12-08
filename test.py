@@ -10,8 +10,8 @@ import os
 # Assign twitter Oauth variables via global system vars
 consumer_key = os.environ.get('BOT_CON_KEY')
 consumer_secret = os.environ.get('BOT_CON_SECRET')
-key = os.environ.get('BOT_CON_PRIVATE')
-secret = os.environ.get('BOT_CON_SECRET')
+apikey = os.environ.get('BOT_API_KEY')
+apisecret = os.environ.get('BOT_API_SECRET')
 url = os.environ.get('BOT_SHARE_URL')
 auth = tweepy.OAuthHandler(os.environ.get('BOT_CON_KEY'), os.environ.get('BOT_CON_SECRET'))
 #auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
