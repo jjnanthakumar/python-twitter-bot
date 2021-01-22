@@ -5,17 +5,10 @@
 import tweepy
 import time
 import os
+# Assign twitter Oauth variables
 
-
-# Assign twitter Oauth variables via global system vars
-consumer_key = os.environ.get('BOT_CON_KEY')
-consumer_secret = os.environ.get('BOT_CON_SECRET')
-apikey = os.environ.get('BOT_API_KEY')
-apisecret = os.environ.get('BOT_API_SECRET')
-url = os.environ.get('BOT_SHARE_URL')
-auth = tweepy.OAuthHandler(os.environ.get('BOT_CON_KEY'), os.environ.get('BOT_CON_SECRET'))
-#auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(os.environ.get('BOT_CON_KEY'), os.environ.get('BOT_CON_SECRET'))
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(key, secret)
 api = tweepy.API(auth)
 # Twitter search strings variables for liking and retweeting trending hashtags
 tweetNumber = 10
@@ -32,60 +25,10 @@ hashtag5tweets = tweepy.Cursor(api.search, hashtag5).items(tweetNumber)
 
 hashtaglist = ['#actualplay', '#ttrpg', '#PathFinder', '#dndstream', '#dungeonsanddragons', '#DnD', '#dnd' ]
 
-# name for file saving tweet records
-FILE_NAME = 'last_seen.txt'
-# Read method for reading last_seen.txt file for reading latest tweets
-def read_last_seen(FILE_NAME):
-    file_read = open(FILE_NAME, 'r')
-    last_seen_id = int(file_read.read().strip())
-    file_read.close()
-    return last_seen_id
-
-# Write method to write to last_seen.txt file for reading latest tweets
-def store_last_seen(FILE_NAME, last_seen_id):
-    file_write = open(FILE_NAME, 'w')
-    file_write.write(str(last_seen_id))
-    file_write.close()
-    return
-
-# Retweet people who mention twittername
-def diceguys_mentions():
-    # Returns the 20 most recent mentions, including retweets.
-    tweets = api.mentions_timeline(read_last_seen(FILE_NAME), tweet_mode='extended')
-    # for loop to like and retweet any
-    # tweets containing @somediceguys
-    for tweet in reversed(tweets):
-        if twittername in tweet.full_text.lower():
-            print("New twitter interaction")
-            tweet.retweet()
-            api.create_favorite(tweet.id)
-
 # For loop to search and like hashtag list
 def search_and_like():
     for tweet in hashtaglist:
         api.create_favorite(tweet.id)
         print( tweet + " found, adding to favorites")
-
-# Search for hashtag variables, like, and retweet
-def searchbot_ht1():
-    for tweet in hashtag1tweets:
-        try:
-            tweet.retweet()
-            api.create_favorite(tweet.id)
-            print( hashtag1 + " found, liked and retweeted")
-        except tweepy.TweepError as e:
-            print(e.reason)
-            time.sleep(3)
-
-# For loop to search and like hashtag list
-def search_and_like():
-    for tweet in hashtaglist:
-        api.create_favorite(tweet.id)
-        print( tweet + " found, adding to favorites")
-
 
 search_and_like
-searchbot_ht1
-
-#while True:
-#    search_and_like

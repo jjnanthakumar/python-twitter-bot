@@ -1,46 +1,19 @@
 import tweepy
 import time
 import os
-
+from credentials import *
+from config import QUERY, FOLLOW, LIKE, SLEEP_TIME, TWEET_NUMBER
 # Assign twitter Oauth variables
-# Set environment variables
-os.environ['BOT_CON_KEY'] = 'username'
-os.environ['BOT_CON_SECRET'] = 'secret'
-os.environ['BOT_CON_PRIVATE'] = 'username'
-os.environ['BOT_CON_SECRET'] = 'secret'
-os.environ['BOT_SHARE_URL'] = 'username'
-os.environ['BOT_TW_AUTH'] = 'secret'
-os.environ['BOT_ACCESS_TOKEN'] = 'username'
-os.environ['BOT_API'] = 'secret'
-os.environ['BOT_TWITTERNNAME'] = 'secret'
-
-consumer_key = 'consumer-key'
-consumer_secret = 'consumer-secret'
-key = 'privateKey'
-secret = 'secret-key'
-url = 'https://linktr.ee/somediceguys'
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(key, secret)
 api = tweepy.API(auth)
-# Twitter search strings variables for liking and retweeting trending hashtags
-tweetNumber = 20
-hashtag1 = '#actualplay'
-hashtag1tweets = tweepy.Cursor(api.search, hashtag1).items(tweetNumber)
-hashtag2 = '#ttrpg'
-hashtag2tweets = tweepy.Cursor(api.search, hashtag2).items(tweetNumber)
-hashtag3 = '#pathfinder'
-hashtag3tweets = tweepy.Cursor(api.search, hashtag3).items(tweetNumber)
-hashtag4 = '#dndstream'
-hashtag4tweets = tweepy.Cursor(api.search, hashtag4).items(tweetNumber)
-hashtag5 = '#dungeonsandragons'
-hashtag5tweets = tweepy.Cursor(api.search, hashtag5).items(tweetNumber)
 
-# Array for hashtags
-hashtagArray = ["#dnd", "#actualplay", "#ttrpg", "#dndstream", "#dungeonsandragons", "#pathfinder"]
-# Create for loop to like array of hashtags
-#create for loop to retweet array of hashtags
-
-# name for file saving tweet records
+# set authentication keys
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(api_key, api_secret)
+api = tweepy.API(auth)
+twittername ='@somediceguys'
+ # name for file saving tweet records
 FILE_NAME = 'last_seen.txt'
 # Read method for reading last_seen.txt file for reading latest tweets
 def read_last_seen(FILE_NAME):
@@ -55,6 +28,35 @@ def store_last_seen(FILE_NAME, last_seen_id):
     file_write.write(str(last_seen_id))
     file_write.close()
     return
+
+# Twitter search strings variables for liking and retweeting trending hashtags
+tweetNumber = 20
+hashtag1 = '#actualplay'
+hashtag1tweets = tweepy.Cursor(api.search, hashtag1).items(tweetNumber)
+hashtag2 = '#ttrpg'
+hashtag2tweets = tweepy.Cursor(api.search, hashtag2).items(tweetNumber)
+hashtag3 = '#pathfinder'
+hashtag3tweets = tweepy.Cursor(api.search, hashtag3).items(tweetNumber)
+hashtag4 = '#dndstream'
+hashtag4tweets = tweepy.Cursor(api.search, hashtag4).items(tweetNumber)
+hashtag5 = '#dungeonsandragons'
+hashtag5tweets = tweepy.Cursor(api.search, hashtag5).items(tweetNumber)
+# Array for hashtags
+hashtagArray = ["#dnd", "#actualplay", "#ttrpg", "#dndstream", "#dungeonsandragons", "#pathfinder"]
+hashArraytweet = tweepy.Cursor(api.search, hashtagArray).items(tweetNumber)
+
+# Create for loop to like array of hashtags
+def likeloop():
+    for i in hashArraytweet:
+       api.create_favorite(tweet.id)
+       print( i + " tweet was liked")
+
+# Create for loop to retweet array of hashtags
+def retweetloop():
+    for i in hashtagArray:
+        tweet.retweet()
+        print( i + " tweet was retweeted")
+
 
 # Search for hashtag variables, like, and retweet
 def searchbot_ht1():
@@ -108,8 +110,17 @@ def searchbot_ht5():
             print(e.reason)
             time.sleep(3)
 
-searchbot_ht1
-searchbot_ht2
-searchbot_ht3
-searchbot_ht4
-searchbot_ht5
+# hashtag1 = '#actualplay'
+# hashtag1tweets = tweepy.Cursor(api.search, hashtag1).items(tweetNumber)
+
+for tweet in hashArraytweet:
+    api.create_favorite(tweet.id)
+    print( tweet + " tweet was liked")
+
+for tweet in hashArraytweet:
+    tweet.retweet()
+    print( i + " tweet was retweeted")
+
+
+likeloop()
+retweetloop()
