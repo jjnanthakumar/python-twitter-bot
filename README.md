@@ -15,7 +15,7 @@ To use this bot, you will need to add the twitter application keys and add them 
 * consumer_secret = 'your_consumer_secret'
 * access_token = 'your_access_token'
 * access_token_secret = 'your_access_token_secret'
-* twittername ='@somediceguys' (for direct message bot)
+* twittername ='@somediceguys' (for direct message bot change this variable to your twitterbot or twittername)
 
 Note: Its important to that you secure the credentials.py file and not share it publicly with your twitter keys on github.
 
@@ -38,7 +38,7 @@ You can change the sample text file to whatever you want. To do som change the l
 * replybot - reply to mentions of you with specific matched words.
 * searchbot - search's through an array of hastags listed and retweets anything that matches it.
 * directbot - Sends a direct message to any new followers that follow you
-* likebot - likes tweets if LIKES = True in config.py 
+* likebot - likes tweets if LIKES = True in config.py
 
 You can change the parameters of the QUERY in config.py to change the hashtags you want to retweet or follow. You can also modify the code to tweet specific things, or follow specific people or trends.
 
